@@ -4,6 +4,6 @@
 
 <template>
   
-<routerView />
+<routerView/>
 
 </template>
