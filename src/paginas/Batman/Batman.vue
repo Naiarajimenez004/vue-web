@@ -77,38 +77,45 @@ const scrollToSection = (sectionId: string) => {
   </div>
 
 <section id="vehiculos">    
-<div class="vehiculos -titulo">
-      <h1>Vehículos de Batman</h1>
-    </div>
-  <div class="vehiculos-caja">
-    <div class="item uno">
-        <div class="informacion">
-          <h2>Avión</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula vulputate elit eget fermentum. Ut laoreet ante lacus. Quisque ut tincidunt metus. Curabitur congue, arcu nec tempus sodales, neque sem ultrices mauris, eu tincidunt nibh nibh eu massa. Aenean rhoncus quis nibh ac facilisis.</p>
-          <small>Fabricado en 2005</small>
-        </div>
-        <img src="/imagines/Batman/avion.jpg"/>
+  <div class="vehiculos-arca">
+
+      <div class="item uno">
+          <div class="notitia">
+            <h2>Avión</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula vulputate elit eget fermentum. Ut laoreet ante lacus. Quisque ut tincidunt metus. Curabitur congue, arcu nec tempus sodales, neque sem ultrices mauris, eu tincidunt nibh nibh eu massa. Aenean rhoncus quis nibh ac facilisis.</p>
+            <small>Fabricado en 2005</small>
+            
+          </div>
+          <img src="/imagines/Batman/avion.jpg"/>
       </div>
 
       <div class="item dos">
-        <div class="informacion">
+        <div class="notitia">
           <h2>Moto</h2>
           <p>Nulla aliquip cupidatat voluptate veniam nostrud aliquip sit enim officia. Sit eu pariatur officia qui dolor adipisicing cupidatat. Sit consectetur et eu ut esse laboris nulla.</p>
           <small>Fabricado en 2006</small>
+          
         </div>
         <img src="/imagines/Batman/moto.jpg"/>
       </div>
       
       <div class="item tres">
-        <div class="informacion">
+        <div class="notitia">
           <h2>Coche</h2>
           <p>Irure adipisicing est minim eu ad dolor. Eu ea commodo pariatur ut occaecat in cupidatat reprehenderit ut laborum duis. Sunt minim ex fugiat reprehenderit. Lorem consectetur reprehenderit commodo non</p>
           <small>Fabricado en 2007</small>
+          
         </div>
         <img src="/imagines/Batman/car.jpg"/>
       </div>
-    </div>
+  </div> 
 
+      <div class="vehiculos-Titulos">
+        <h1>Vehículos de Batman</h1>
+      </div>
+
+<section id="videre" class="w-full flex justify-center items-center min-h-[10vh] lg:min-h-[10vh] ">
+</section>
 
  </section>
 
@@ -123,8 +130,8 @@ const scrollToSection = (sectionId: string) => {
 
 
 .icon-home {
-    width: 60px;
-    height: 60px;
+    width: 3rem;
+    height: 3rem;
     color: slateblue;
 }
 
@@ -134,7 +141,7 @@ const scrollToSection = (sectionId: string) => {
 
 .icon-home :hover {
     color: rgb(255, 255, 255);
-    background-color: red;
+    background-color: slateblue;
 
 }
 
@@ -154,7 +161,6 @@ const scrollToSection = (sectionId: string) => {
     width: 100%;
     border-radius: 0;
     opacity: 1;
-    left: 0;
   }
 }
 
@@ -191,66 +197,165 @@ const scrollToSection = (sectionId: string) => {
   font-family: "batman";
 }
 
-@media (min-width: 900px) {
-  .titulus > p {
+@media (min-width: 600px) {
+  .Titulo > p {
     display: block;
   }
 }
 
 #vehiculos {
-  max-width: 600px;
+  max-width: 510px;
   margin: 0 auto;
-  padding: 8rem 0;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.vehiculos-titulus {
-  height: 5.5rem; /* 88px */
+.vehiculos-arca {
+  display: flex;
+  flex-direction: column;
+  order: 1;
+}
+
+.vehiculos-Titulos {
+  height: 9rem; /* 88px */
   font-size: 2rem;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  display: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .item {
-  padding: 2.5rem 0;
-  height: 555px;
+  padding: 1.5rem 0;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.item > img {
+  width: 420px;
 }
 
 .uno {
   background-color: rgba(220, 220, 220, 0.2) ; 
+  order: 2;
 }
+  .uno > img {
+    order: -1;
 
+  }
 .dos {
   background-color: rgba(220, 220, 220, 0.8);
 }
 
 .tres {
   background-color: rgba(220, 220, 220, 0.8);
+  order: 3;
 }
- 
-.informacion > small {
-  font-family: Arial, Helvetica, sans-serif;
+
+.notitia {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notitia > small {
   font-weight: bold;
   padding: 1rem;
-}
- 
-.informacion > p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  padding: 1rem;
+
 }
 
-.informacion > h2 {
- font-size: 1.7rem; 
- font-weight: 600;
- color: rgba(0, 0, 0, 0.7);
- padding-bottom: 1rem;
+.notitia > h2 {
+  font-size: 1.7rem; 
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+  padding-bottom: 1rem;
 } 
 
-img {
-  width: 70%;
-  height: 70%;
-  object-fit: center;
-  
+@media (min-width: 640px) {
+  #vehiculos {
+    max-width: 576px;
+  }   
+
 }
+
+@media (min-width: 768px) {
+  #vehiculos {
+    max-width: 900px;
+
+  }   
+
+  .item {
+    flex-direction: row;
+    height: 320px;
+
+  }
+
+  .notitia {
+    width: 40%;
+
+  }
+
+}
+
+@media (min-width: 1024px) {
+  #vehiculos {
+    max-width: 1280px;
+
+  } 
+
+  .vehiculos-arca {
+    flex-direction: row;
+
+  }
+
+  .item {
+    flex-direction: column;
+    height: 500px;
+
+  }
+
+  .notitia {
+    width: 90%;
+  }
+
+  .uno > img {
+    order: -1;
+
+  }
+
+}
+
+
+
+
 </style>
 
+
+
+
+
+ 
+
+
+ 
+
+  
+ 
+
+
+
+
+
+
+
+  
+
+
+
+ 
