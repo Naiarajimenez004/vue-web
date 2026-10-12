@@ -27,15 +27,17 @@ const scrollToSection = (sectionId: string) => {
 <template>
 
   <div class="Batman">
-      <div class="extra-nav">
+
+      <nav class="extra-nav flex flex-col sm:flex-row justify-between px-3">
       <RouterLink to="/">
         <House class="icon-home" />
       </RouterLink>
+
         <NavigationMenu>
-          <NavigationMenuList>
+          <NavigationMenuList class="flex flex-col sm:flex-row">
             <NavigationMenuItem>
               <a href="#" @click.prevent="scrollToSection('#')"> 
-              <NavigationMenuLink :class="navigationMenuTriggerStyle">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Portada
               </NavigationMenuLink>
               </a>
@@ -43,7 +45,7 @@ const scrollToSection = (sectionId: string) => {
 
             <NavigationMenuItem>
               <a href="#vehiculos" @click.prevent="scrollToSection('#vehiculos')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Vehiculos
               </NavigationMenuLink>
               </a>
@@ -51,7 +53,7 @@ const scrollToSection = (sectionId: string) => {
 
             <NavigationMenuItem>
               <a href="#imagenes" @click.prevent="scrollToSection('#imagenes')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Imágenes
               </NavigationMenuLink>
               </a>
@@ -59,7 +61,7 @@ const scrollToSection = (sectionId: string) => {
 
             <NavigationMenuItem>
               <a href="#contacto" @click.prevent="scrollToSection('#contacto')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Contacto
               </NavigationMenuLink>
               </a>
@@ -67,7 +69,7 @@ const scrollToSection = (sectionId: string) => {
 
           </NavigationMenuList>
         </NavigationMenu>
-      </div>
+      </nav>
     
       <header class="Titulo">
           <h1>Batman</h1>
@@ -146,7 +148,7 @@ const scrollToSection = (sectionId: string) => {
 }
 
 .extra-nav {
-  background-color: rgb(209, 126, 251);
+  background-color: rgb(187, 56, 253);
   opacity: 0.7;
   box-shadow: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -161,7 +163,22 @@ const scrollToSection = (sectionId: string) => {
     width: 100%;
     border-radius: 0;
     opacity: 1;
+    
   }
+
+}
+
+@media (min-width: 450px){
+  .extra-nav {
+    width: fixed;
+    padding-inline: calc(var(--spacing) * 1);
+    padding-block: calc(var(--spacing) * 6);
+    margin: calc(var(--spacing) * 0);
+    border-radius: 2;
+    opacity: 1;
+    
+  }
+
 }
 
 .Titulo-img {

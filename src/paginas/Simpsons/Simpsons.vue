@@ -14,9 +14,7 @@ import { House } from '@lucide/vue';
 
         <header class="Titulo">
 
-            <h1>Simpsons</h1>
-            <div id="Titulo-Simpsons" class="Titulo-img"></div>
-            <p>Soy homero chino</p>
+            <h1 class="text-6x1 m-8 text-red-800 bg-amber-300 w-fit px-12 py-5 rounded-2xl shadow-x1 hover:bg-red-800 hover:text-white">Simpsons</h1>  
         </header>
     </div>
 
@@ -25,27 +23,21 @@ import { House } from '@lucide/vue';
 <style scoped>
 
 .icon-home {
-    width: 2rem;
-    Height: 2rem ;
+    width: 3rem;
+    height: 3rem;
     color: slateblue;
 }
 
 .icon-home {
-    margin-left: 200px;
+    margin-left: 0px;
 }
 
-.icone-home :hover {
-    color: white;
-    background-color: red;
+.icon-home :hover {
+    color: rgb(255, 255, 255);
+    background-color: slateblue;
 
 }
 
-.Titulo-img {
-  background-size: 100% 100%;
-  background-position: center center;
-  background-image: url("../imagines/Simpsons/images.jpg");
-  min-height: 100vh;
-}
 
 .Titulo-img:hover {
   background-size: 115% 115%;
@@ -71,5 +63,9 @@ import { House } from '@lucide/vue';
   pointer-events:none;
 }
 
+.saludo {
+  color: red;
+  font-size: rem;
+}
 
 </style>

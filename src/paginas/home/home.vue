@@ -6,52 +6,37 @@ import Button from '@/components/ui/button/Button.vue';
 </script>
 
 <template>
-    <div class = "fondo-home">
-    <h1>
-       <span> Diseño </span> Web y 
-       <br> 
-       Apps <span> interactivas </span> 
-    </h1>
-        <div class="Botones">
-            <Button>
+    <div class="bg-(--color-domus-navy) h-screen text-white font-press Start 2p text-center flex flex-col items-center justify-center gap-12 fixed w-screen overflow-hidden">
+
+      <img class="absolute opacity-30" src="/imagines/tonitrui.png"/>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl fond-bold pb-5 md:pb-20 z-10 transition-all">
+            <span class="text-domus-cyan"> Diseño </span> Web y 
+            <br> 
+            Apps <span class="text-domus-cyan"> interactivas </span> 
+        </h1>
+
+        <p class="text-lg md:text-4xl transition-all ">
+            Aprendiendo a crear aplicaciones web
+        </p>
+
+    <div class="scale-z-10">
+            <Button variant="home" class="mr-2">
                 <RouterLink to="/Indecision">Sí o no</RouterLink>
             </Button>
 
-            <Button>
+            <Button variant="home" class="mr-2">
                 <RouterLink to="/Simpsons">Simpsons</RouterLink>
             </Button>
 
-            <Button>
+            <Button variant="home" class="mr-2">
                 <RouterLink to="/Batman">Batman</RouterLink>
             </Button>
 
-            <Button>
+            <Button variant="home" class="mr-2">
                 <a href="https://www.youtube.com/">Sí o no</a>
             </Button>
         </div>
     </div>
 
 </template>
-
-<style scooped>
-
-.Botones > Button {
-    background-color: rgb(118, 141, 224);
-}
-
- h1 {
-    font-size: 3rem;
- }
-
-.fondo-home {
-  background-color: rgb(231, 163, 214);
-  height: 100vh;
-  color: rgb(24, 182, 246);
-}
-
-
-.Botones > Button:hover {
-  background-color: rgba(16, 169, 229, 0.7);
-} 
-
-</style>
