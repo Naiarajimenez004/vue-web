@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { House } from '@lucide/vue';
+import { House, Menu } from '@lucide/vue';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,10 +9,27 @@ import {
 } from '@/components/ui/navigation-menu'
 import ImagenesCarousel from '@/components/ui/ImagenesCarousel.vue';
 import { scrollToSection } from '@/utils/scrollToSection';
-
+import { onMounted, ref } from 'vue';
 scrollToSection 
+import { Toggle } from '@/components/ui/toggle'
 
 const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
+
+const videreMenu = ref<boolean>(true)
+
+const handleResize = () => {
+  if (window.innerWidth <= 640) {
+    videreMenu.value = false
+  } else { 
+    videreMenu.value = true
+  }
+}
+
+onMounted(() => {
+  handleResize()
+  window.addEventListener('resize', handleResize)
+})
+ 
 
 </script>
 
@@ -20,8 +37,14 @@ const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", 
 <template>
 
   <div class="Batman">
+      <Toggle
+        class="fixed top-2 right-4 z-50 bg-slate-500 sm:hidden"
+        @click="videreMenu = !videreMenu"
+      >
+       <Menu />
+      </Toggle>
 
-      <nav class="extra-nav flex flex-col sm:flex-row justify-between px-3">
+      <nav v-if="videreMenu" class="extra-nav flex flex-col sm:flex-row justify-between px-3">
       <RouterLink to="/">
         <House class="icon-home" />
       </RouterLink>
