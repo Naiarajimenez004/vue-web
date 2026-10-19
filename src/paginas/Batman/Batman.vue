@@ -15,6 +15,17 @@ import { Toggle } from '@/components/ui/toggle'
 
 const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
 
+interface coordenadas {
+  x: number
+  y: number
+}
+
+const mousePosition = ref<coordenadas>({
+  x: 0,
+  y: 0
+})
+
+
 const videreMenu = ref<boolean>(true)
 
 const handleResize = () => {
@@ -30,9 +41,34 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
 })
  
+onMounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+
+const cumMouseMove = (event: MouseEvent) => {
+  
+  const rect = (event.target as HTMLElement).getBoundingClientRect()
+
+  const centerX = rect.left + rect.width / 2
+  const centerY = rect.top + rect.height / 2
+
+  const mouseX = event.clientX - rect.left
+  const mouseY = event.clientY - rect.top
+
+  mousePosition.value = {
+    x: (centerX - mouseX) * 0.1,
+    y: (centerY - mouseY) * 0.1
+  }
+}
+
+const cumMouseLeave = () => {
+  mousePosition.value ={
+    x: 0,
+    y: 0
+  }
+}
 
 </script>
-
 
 <template>
 
@@ -89,8 +125,19 @@ onMounted(() => {
     
       <header class="Titulo">
           <h1>Batman</h1>
-          <p>Él puede tomar la decisión que nadie más puede, la decisión correcta</p>
-        <div id="Titulo-Batman" class="Titulo-img"></div>
+        <div
+         id="Titulo-Batman" 
+         class="Titulo-img"
+         @mousemove="cumMouseMove"
+         @mouseleave="cumMouseLeave"
+         :style="{
+          backgroundPositionX: `calc(50% + ${mousePosition.x}px)`,
+          backgroundPositionY: `calc(50% + ${mousePosition.y}px)`,
+          transition: `backgroundPosition 0.1 ease-out`
+         }"
+        ></div>
+
+        <p>Él puede tomar la decisión que nadie más puede, la decisión correcta</p>
       </header>
   </div>
 
@@ -206,7 +253,7 @@ onMounted(() => {
   background-size: 100% 100%;
   background-position: center center;
   background-image: url("../imagines/Batman/batman.jpg");
-  min-height: 100vh;
+  aspect-ratio: 10/9;
 }
 
 .Titulo-img:hover {
@@ -215,7 +262,7 @@ onMounted(() => {
 
 .Titulo > h1 {
   position: absolute;
-  top: 63%;
+  top: calc(100vw * 0.5);
   width: 100%;
   text-align: center;
   font-size: 5rem; 
@@ -226,7 +273,7 @@ onMounted(() => {
 
 .Titulo > p {
   position: absolute;
-  top: 36%;
+  top: calc(50vw * 0.5);
   width: 100%;
   text-align: center;
   font-size: 1rem;
