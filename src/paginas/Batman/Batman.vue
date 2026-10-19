@@ -12,61 +12,30 @@ import { scrollToSection } from '@/utils/scrollToSection';
 import { onMounted, ref } from 'vue';
 scrollToSection 
 import { Toggle } from '@/components/ui/toggle'
+import { useMouseMotion } from '@/composables/useMouseMotion';
 
-const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
+  const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
 
-interface coordenadas {
-  x: number
-  y: number
-}
+  const { mousePosition, cumMouseLeave, cumMouseMove} = useMouseMotion()
 
-const mousePosition = ref<coordenadas>({
-  x: 0,
-  y: 0
-})
+  const videreMenu = ref<boolean>(true)
 
-
-const videreMenu = ref<boolean>(true)
-
-const handleResize = () => {
-  if (window.innerWidth <= 640) {
-    videreMenu.value = false
-  } else { 
-    videreMenu.value = true
+  const handleResize = () => {
+    if (window.innerWidth <= 640) {
+      videreMenu.value = false
+    } else { 
+      videreMenu.value = true
+    }
   }
-}
 
-onMounted(() => {
-  handleResize()
-  window.addEventListener('resize', handleResize)
-})
- 
-onMounted(() => {
-  window.removeEventListener('resize', handleResize)
-})
-
-const cumMouseMove = (event: MouseEvent) => {
+  onMounted(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+  })
   
-  const rect = (event.target as HTMLElement).getBoundingClientRect()
-
-  const centerX = rect.left + rect.width / 2
-  const centerY = rect.top + rect.height / 2
-
-  const mouseX = event.clientX - rect.left
-  const mouseY = event.clientY - rect.top
-
-  mousePosition.value = {
-    x: (centerX - mouseX) * 0.1,
-    y: (centerY - mouseY) * 0.1
-  }
-}
-
-const cumMouseLeave = () => {
-  mousePosition.value ={
-    x: 0,
-    y: 0
-  }
-}
+  onMounted(() => {
+    window.removeEventListener('resize', handleResize)
+  })
 
 </script>
 
