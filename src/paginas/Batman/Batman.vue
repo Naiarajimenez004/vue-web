@@ -5,6 +5,26 @@ import { scrollToSection } from '@/utils/scrollToSection';
 scrollToSection
 import { useMouseMotion } from '@/composables/useMouseMotion';
 import NavigationPrimary from '@/components/ui/navigationPrimary.vue';
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { Calendar } from '@/components/ui/calendar'
+import type { DateValue } from 'reka-ui';
+import { ref } from 'vue';
+
+  const dies  = ref<DateValue>()
 
   const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
 
@@ -106,6 +126,140 @@ import NavigationPrimary from '@/components/ui/navigationPrimary.vue';
   />
   
 </section>
+
+<section id="contactus" class="w-full py-12 bg-gray-100">
+
+  <div class="container mx-auto max-w-5xl px-4">
+
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Contacta con Batman</h2>
+          
+    <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+            <!-- Mapa de Google Maps -->
+      <div class="hidden lg:block w-full lg:w-1/2 rounded-lg overflow-hidden shadow-lg">
+        <div class="aspect-square">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3728.9158364387918!2d-0.34403229999998675!3d39.48372270000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60488259073375%3A0xfb410ba707ca33c9!2sUPV%20-%20Facultad%20de%20Bellas%20Artes%20BBAA!5e1!3m2!1ses!2ses!4v1793222619983!5m2!1ses!2ses"
+            class="w-full h-full rounded-lg"
+            :style="{ border: 0 }"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+            <!-- Formulario -->
+      <div class="w-full max-w-md mx-auto lg:max-w-none lg:w-1/2 ">
+        <form  class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square">
+          <div class="space-y-2">
+            <Label for="nombre">Nombre</Label>      
+            <Input id="nombre" required />
+
+          </div>
+                
+          <div class="space-y-2">
+              
+            <Label for="apellido">Apellidos</Label>      
+            <Input id="apellido" required />            
+
+          </div>
+
+          <div class="space-y-2">
+
+              <Select required>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecciona una mision" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="rescatar">
+                    Rescate de gatitos
+                  </SelectItem>
+                  <SelectItem value="investigar">
+                    Investigación policial
+                  </SelectItem>
+                  <SelectItem value="perseguir">
+                    Persecución de villanos
+                  </SelectItem>
+                  <SelectItem value="defender">
+                    defensa de gotham
+                  </SelectItem>
+                  <SelectItem value="batmovil">
+                    Conducir el Batmóvil
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+
+          </div>
+
+          <div class="space-y-2">
+
+            <Label>Fecha de la misión</Label> 
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline">
+                  <span v-if="dies">
+                    {{dies?.day}}/{{ dies.month }}/{{ dies.year }}
+                  </span>
+
+                  <span v-else class="text-gray-500">
+                    Selecciona una fecha
+                  </span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent class="w-auto p-0">
+               <Calendar v-model="dies" />
+              .</PopoverContent>
+            </Popover>
+          </div>
+
+          Poner un botón para enviar la solicitud
+              
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="w-full bg-gray-900 text-gray-300 py-12">
+   <div class="flex flex-col md:flex-row md:justify-around gap-8 max-w-3xl mx-auto">
+
+    <div class="space-y-4 text-center md:text-left">
+
+      <h3 class="text-xl font-bold text-white">Información de Contacto</h3>
+            
+        <div class="space-y-2">
+          <p class="flex items-center gap-2 justify-center md:justify-start">
+
+            +1 (555) 123-4567
+
+          </p>
+          <p class="flex items-center gap-2 justify-center md:justify-start">
+
+            batman@wayneenterprises.com
+
+          </p>
+          <p class="flex items-center gap-2 justify-center md:justify-start">
+
+            Wayne Manor, Gotham City
+
+          </p>
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="space-y-4 text-center md:text-left text-gray-400">
+        <h3 class="text-xl font-bold text-white">Síguenos</h3>
+        <div class="flex gap-8 justify-center">
+        
+          Icono de X -
+          Icono de Instagram -
+          Icono de Linkedin - 
+          Icono de MessageCircle
+              
+        </div>
+    </div>
+  </div>
+</footer>
 
 </template>
 
