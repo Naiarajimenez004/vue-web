@@ -23,8 +23,18 @@ import {
 import { Calendar } from '@/components/ui/calendar'
 import type { DateValue } from 'reka-ui';
 import { ref } from 'vue';
+import { Loader2, LucideBadgeCheck, Mail, MapPin, MessageCircle, Phone, X } from '@lucide/vue';
+import {Icon} from '@iconify/vue'
+import { toast } from 'vue-sonner';
+
+
+
 
   const dies  = ref<DateValue>()
+  const nombre = ref<string>("")
+  const apellido = ref<string>("")
+  const mision = ref<string>("")
+  const estLoading = ref<boolean>(false)
 
   const fotos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
 
@@ -52,6 +62,41 @@ import { ref } from 'vue';
     onClick: () => scrollToSection('#contacto')
   },
 ]
+
+const EnviarFormulario = async () => {
+  estLoading.value = true 
+
+  toast(`Solicitud enviada correctamente
+    - nombre: ${nombre.value}
+    - mision: ${mision.value}
+    - fecha: ${dies.value ? '${dies.value.day}/${dies.value.month}/${dies.value.year}' : 'no especificado'}'`, {
+      duration: 4000,
+      position: 'top-right',
+      icon: LucideBadgeCheck,
+      style: {
+        background: '#201c3b',
+        color: '#fff',
+        whiteSpace: 'pre-wrap',
+      },
+    } 
+  )
+
+ 
+
+  await new Promise((resolve) => setTimeout(resolve, 2000))
+  estLoading.value = false
+
+  console.log('Formulario enviado:', {
+  dies: dies.value,
+  nombre: nombre.value,
+  apellido: apellido.value,
+  mision: mision.value,
+})
+
+  nombre.value = ""
+  apellido.value = ""
+  mision.value = ""
+}
 
 </script>
 
@@ -150,23 +195,26 @@ import { ref } from 'vue';
 
             <!-- Formulario -->
       <div class="w-full max-w-md mx-auto lg:max-w-none lg:w-1/2 ">
-        <form  class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square">
+        <form  
+        class="space-y-6 bg-white p-8 rounded-lg shadow-lg aspect-square"
+        @submit.prevent="EnviarFormulario"
+        >
           <div class="space-y-2">
             <Label for="nombre">Nombre</Label>      
-            <Input id="nombre" required />
+            <Input id="nombre" required v-model="nombre"/>
 
           </div>
                 
           <div class="space-y-2">
               
             <Label for="apellido">Apellidos</Label>      
-            <Input id="apellido" required />            
+            <Input id="apellido" required v-mode="apellido"/>            
 
           </div>
 
           <div class="space-y-2">
 
-              <Select required>
+              <Select required v-mode="mision">
                 <SelectTrigger>
                   <SelectValue placeholder="Selecciona una mision" />
                 </SelectTrigger>
@@ -212,7 +260,15 @@ import { ref } from 'vue';
             </Popover>
           </div>
 
-          Poner un botón para enviar la solicitud
+          <Button 
+          type="submit" 
+          class="w-full bg-brand-purple hover:bg-brand-purple-dark"
+          :disabled="estLoading"
+          >
+              <Loader2 v-if="estLoading" class="mr-2 h-4 w-4 animate-spin" />
+              <span v-if="estLoading">Enviando...</span>
+              Enviar Solicitud
+          </Button>
               
         </form>
       </div>
@@ -229,17 +285,17 @@ import { ref } from 'vue';
             
         <div class="space-y-2">
           <p class="flex items-center gap-2 justify-center md:justify-start">
-
+            <phone class="w-5 h-5"/>
             +1 (555) 123-4567
 
           </p>
           <p class="flex items-center gap-2 justify-center md:justify-start">
-
+            <Mail class="w-5 h-5"/>
             batman@wayneenterprises.com
 
           </p>
           <p class="flex items-center gap-2 justify-center md:justify-start">
-
+            <MapPin class="w-5 h-5"/>
             Wayne Manor, Gotham City
 
           </p>
@@ -251,10 +307,10 @@ import { ref } from 'vue';
         <h3 class="text-xl font-bold text-white">Síguenos</h3>
         <div class="flex gap-8 justify-center">
         
-          Icono de X -
-          Icono de Instagram -
-          Icono de Linkedin - 
-          Icono de MessageCircle
+          <X class="w-10 h-10 hover: text-white" />
+          <Icon icon="mdi:instagram" class="w-10 h-10 hover:text-white"/>
+          <Icon icon="mdi:linkedin" class="w-10 h-10 hover:text-white"/>          
+          <MessageCircle class="w-10 h-10 hover:text-white"/>
               
         </div>
     </div>
