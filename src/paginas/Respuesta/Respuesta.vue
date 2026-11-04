@@ -1,6 +1,57 @@
 
 <template>
+ <!-- <h1>Página de indecisión</h1> -->
 
-    <h1>Página de indecisión</h1>
+ <routerLink to ="/" class="text-2xl ml4">Home</routerLink>
+
+<div class="w-[800px] h-[800px] border-2 m-4 grid grid-cols-4 grid-rows-3 gap-4"> 
+
+    <div class="bg-sky-400 col-span-3 flex flex-row-reverse items-end gap-4 p-4">
+        <div class="bg-sky-200 w-18 h-full"></div>
+        <div class="bg-sky-200 w-18 h-[60%] order-first"></div>
+        <div class="bg-sky-200 w-18 h-[40%]"></div>
+        <div class="bg-sky-800 w-18 h-full flex-1"></div>
+    </div>
+
+    <div class="bg-pink-400 row-span-3 p-4 flex flex-col justify-between items-center">
+        <div class="bg-pink-600 w-[80%] h-16"></div>
+        <div class="bg-pink-600 w-full h-[60%] p-3 grid grid-cols-2 grid-rows-3 gap-3">
+            <div class="bg-pink-800 col-span-2"></div>
+            <div class="bg-white row-span-2"></div>
+            <div class="bg-white"></div>
+            <div class="bg-pink-800"></div>
+        
+        </div>
+        <div class="bg-pink-600 w-[40%] h-16 self-end"></div>
+    </div>
+
+    <div class="bg-green-400 row-span-2 p-4 flex flex-col-reverse flex-wrap gap-4 ">
+        <div class="bg-lime-200 w-12 h-[20%]"></div>
+        <div class="bg-lime-200 w-12 h-[20%]"></div>
+        <div class="bg-white w-12 h-[20%] order-first"></div>
+        <div class="bg-lime-200 w-12 h-[20%]"></div>
+        <div class="bg-white w-12 h-[20%] order-first"></div>
+    </div>
+
+    <div class="bg-yellow-400 col-span-2 p-4 grid grid-cols-4 grid-rows-2 gap-3">
+        <div class="bg-amber-500 col-span-2"></div>
+        <div class="bg-yellow-200 row-span-2"></div>
+        <div class="bg-white"></div>
+        <div class="bg-white"></div>
+    </div>
+
+    <div class="bg-purple-400 flex justify-center items-center">
+        <div class="bg-violet-100 w-22 h-22 rounded-full"></div>
+    </div>
+
+    <div class="bg-red-400 flex gap-3 p-3 flex-wrap content-center">
+        <div class="bg-teal-200 w-10 h-10"></div>
+        <div class="bg-teal-200 w-10 h-10"></div>
+        <div class="bg-teal-200 w-10 h-10"></div>
+        <div class="bg-teal-200 w-10 h-10"></div>
+        <div class="bg-teal-200 w-10 h-10"></div>
+    </div>
+
+</div>
 
 </template>
