@@ -4,14 +4,13 @@
 @import "tw-animate-css";
 
 body {
-  font-family: "press Start 2p", sans-serif
+  font-family: "sans-serif", sans-serif
 }
 
 @font-face {
   font-family: 'batman';
   src: url(../fonts/batmfa__.ttf);
 }
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -137,6 +136,7 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }

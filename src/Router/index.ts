@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../paginas/home/home.vue";
 import Batman from "../paginas/Batman/Batman.vue";
 import Respuesta from "../paginas/Respuesta/Respuesta.vue";
-import Simpsons from "../paginas/Simpsons/Simpsons.vue";
+import Primus from "../paginas/Simpsons/Primus.vue";
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -25,7 +25,7 @@ export const router = createRouter({
         {
             path: '/Simpsons',
             name: 'Simpsons',
-            component: Simpsons
+            component: Primus
         },
         {
             path: '/:pathMatch(.*)*',

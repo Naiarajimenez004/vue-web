@@ -4,7 +4,7 @@
 
  <routerLink to ="/" class="text-2xl ml4">Home</routerLink>
 
-<div class="w-[800px] h-[800px] border-2 m-4 grid grid-cols-4 grid-rows-3 gap-4"> 
+<div class="w-200 h-200 border-2 m-4 grid grid-cols-4 grid-rows-3 gap-4"> 
 
     <div class="bg-sky-400 col-span-3 flex flex-row-reverse items-end gap-4 p-4">
         <div class="bg-sky-200 w-18 h-full"></div>
